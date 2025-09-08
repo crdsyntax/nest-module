@@ -15,7 +15,7 @@ const className = moduleName.charAt(0).toUpperCase() + moduleName.slice(1);
 const moduleDir = `src/${kebabName}`;
 
 console.log(`🛠️ Generando módulo ${kebabName}...`);
-execSync(`npx nest g module ${kebabName}`, { stdio: 'inherit' });
+execSync(`npx --yes @nestjs/cli g module ${kebabName}`, { stdio: 'inherit' });
 
 const folders = ['services', 'controllers', 'dto', 'entities', 'tests'];
 folders.forEach(folder => {
@@ -67,7 +67,7 @@ export class Update${className}Dto extends PartialType(Create${className}Dto) {}
     console.log(`📄 Update DTO creado: ${updateDtoFile}`);
 }
 
-execSync(`npx nest g service ${kebabName}`, { stdio: 'inherit' });
+execSync(`npx --yes @nestjs/cli g service ${kebabName}`, { stdio: 'inherit' });
 fs.renameSync(`${moduleDir}/${kebabName}.service.ts`, `${moduleDir}/services/${kebabName}.service.ts`);
 fs.renameSync(`${moduleDir}/${kebabName}.service.spec.ts`, `${moduleDir}/tests/${kebabName}.service.spec.ts`);
 
@@ -111,7 +111,7 @@ export class ${className}Service {
 `);
 console.log(`📝 Service con CRUD básico generado: ${servicePath}`);
 
-execSync(`npx nest g controller ${kebabName}`, { stdio: 'inherit' });
+execSync(`npx --yes @nestjs/cli g controller ${kebabName}`, { stdio: 'inherit' });
 fs.renameSync(`${moduleDir}/${kebabName}.controller.ts`, `${moduleDir}/controllers/${kebabName}.controller.ts`);
 fs.renameSync(`${moduleDir}/${kebabName}.controller.spec.ts`, `${moduleDir}/tests/${kebabName}.controller.spec.ts`);
 

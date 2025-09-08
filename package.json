@@ -4,12 +4,9 @@
   "description": "generate nest module with basic interface using nestjs, typeorm, swagger",
   "license": "ISC",
   "author": "crdsyntax",
-  "type": "module",
+  "private": false,
   "main": "index.js",
   "bin": {
-    "generate:module": "bin/generate-module.js"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "generate:module": "./bin/generate-module.js"
   }
 }
