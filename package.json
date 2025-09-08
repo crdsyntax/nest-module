@@ -1,0 +1,15 @@
+{
+  "name": "nest-module",
+  "version": "1.0.0",
+  "description": "generate nest module with basic interface using nestjs, typeorm, swagger",
+  "license": "ISC",
+  "author": "crdsyntax",
+  "type": "module",
+  "main": "index.js",
+  "bin": {
+    "generate:module": "bin/generate-module.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
