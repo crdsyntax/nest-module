@@ -108,7 +108,7 @@ export class ${className}Service {
   async findOne(id: number) {
     try {
       const item = await this.repository.findOne(id);
-      if (!item) throw new HttpException("${pascalName} no encontrado", HttpStatus.NOT_FOUND);
+      if (!item) throw new HttpException("${className} no encontrado", HttpStatus.NOT_FOUND);
       return item;
     } catch (error) {
       this.logger.error(error.message);
@@ -129,7 +129,7 @@ export class ${className}Service {
   async update(id: number, data: any) {
     try {
       const updated = await this.repository.update(id, data);
-      if (!updated) throw new HttpException("${pascalName} no encontrado", HttpStatus.NOT_FOUND);
+      if (!updated) throw new HttpException("${className} no encontrado", HttpStatus.NOT_FOUND);
       return updated;
     } catch (error) {
       this.logger.error(error.message);
@@ -141,7 +141,7 @@ export class ${className}Service {
   async remove(id: number) {
     try {
       const deleted = await this.repository.remove(id);
-      if (!deleted) throw new HttpException("${pascalName} no encontrado", HttpStatus.NOT_FOUND);
+      if (!deleted) throw new HttpException("${className} no encontrado", HttpStatus.NOT_FOUND);
       return deleted;
     } catch (error) {
       this.logger.error(error.message);
