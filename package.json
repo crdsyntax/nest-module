@@ -1,6 +1,6 @@
 {
   "name": "@crdsyntax/nest-module",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "generate nest module with basic interface using nestjs, typeorm, swagger",
   "license": "ISC",
   "author": "crdsyntax",

@@ -31,7 +31,7 @@ folders.forEach(folder => {
 const entityFile = path.join(moduleDir, 'entities', `${kebabName}.entity.ts`);
 if (!fs.existsSync(entityFile)) {
   fs.writeFileSync(entityFile,
-`import { Entity, PrimaryGeneratedColumn, Column, DeleteDateColumn, UpdateDatecolumn, CreateDateColumn } from 'typeorm';
+`import { Entity, PrimaryGeneratedColumn, Column, DeleteDateColumn, UpdateDateColumn, CreateDateColumn } from 'typeorm';
 
 @Entity()
 export class ${className} {
@@ -41,10 +41,16 @@ export class ${className} {
   @Column()
   name: string;
 
+  @Column()
+  email: string;
+
+  @Column()
+  hash: string;
+
   @CreateDateColumn()
   created_at: Date;
 
-  @UpdateDatecolumn()
+  @UpdateDateColumn()
   updated_at: Date;
 
   @DeleteDateColumn()
@@ -84,13 +90,14 @@ fs.renameSync(`${moduleDir}/${kebabName}.service.spec.ts`, `${moduleDir}/tests/$
 
 const servicePath = path.join(moduleDir, 'services', `${kebabName}.service.ts`);
 fs.writeFileSync(servicePath,
-`import { Injectable } from '@nestjs/common';
+`import { Injectable, HttpException, HttpStatus, Logger } from '@nestjs/common';
 import { ${className}Repository } from '../repositories/${kebabName}.repository';
 import { Create${className}Dto } from '../dto/create-${kebabName}.dto';
 import { Update${className}Dto } from '../dto/update-${kebabName}.dto';
 
 @Injectable()
 export class ${className}Service {
+  private readonly logger = new Logger(${className}.name);
   constructor(private readonly repository: ${className}Repository) {}
 
  async findAll(page = 1, limit = 10) {
@@ -209,8 +216,8 @@ fs.renameSync(`${moduleDir}/${kebabName}.controller.spec.ts`, `${moduleDir}/test
 
 const controllerPath = path.join(moduleDir, 'controllers', `${kebabName}.controller.ts`);
 fs.writeFileSync(controllerPath,
-`import { Controller, Get, Post, Body, Param, Patch, Delete, ParseIntPipe } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
+`import { Controller, Get, Post, Body, Param, Patch, Delete, ParseIntPipe, Query } from '@nestjs/common';
+import { ApiTags, ApiOperation, ApiResponse, ApiQuery } from '@nestjs/swagger';
 import { ${className}Service } from '../services/${kebabName}.service';
 import { Create${className}Dto } from '../dto/create-${kebabName}.dto';
 import { Update${className}Dto } from '../dto/update-${kebabName}.dto';
